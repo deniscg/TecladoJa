@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.example.denis.tecladov3.AulaActivity">
+
+    <TextView
+        android:id="@+id/aula02_M1_msg01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/tam"
+        android:text="/Aula 02"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="13dp"
+        tools:ignore="HardcodedText,MissingConstraints" />
+    <TextView
+        android:id="@+id/aula02_M1_msg02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/tam"
+        android:text="Vamos para mais uma etapa?"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="38dp"
+        tools:ignore="HardcodedText,MissingConstraints" />
+    <TextView
+        android:id="@+id/aula02_M1_msg03"
+        android:layout_width="wrap_content"
+        android:textSize="@dimen/tam"
+        android:layout_height="wrap_content"
+        android:text="@string/titulo"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="71dp"
+        tools:ignore="MissingConstraints" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="318dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/aula02_M1_msg04"
+            android:layout_width="wrap_content"
+            android:layout_height="269dp"
+            android:text="@string/aula01_2"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp"
+            android:textSize="@dimen/tam"
+            tools:layout_editor_absoluteY="111dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/aula02_M1_imageView2"
+            android:layout_width="167dp"
+            android:layout_height="160dp"
+            app:srcCompat="@mipmap/ic_launcher"
+            tools:layout_editor_absoluteY="231dp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:ignore="ContentDescription,MissingConstraints"/>
+
+        <Button
+            android:id="@+id/aula02_M1_btnaula022M1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="clickAction"
+            android:text="Avançar"
+            tools:ignore="HardcodedText,MissingConstraints"
+            tools:layout_editor_absoluteX="276dp"
+            tools:layout_editor_absoluteY="417dp" />
+    </LinearLayout>
+
+
+</LinearLayout>
