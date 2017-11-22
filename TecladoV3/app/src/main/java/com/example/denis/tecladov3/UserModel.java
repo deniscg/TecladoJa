@@ -18,7 +18,7 @@ public class UserModel {//chama-se Livro
         this.nomeLivro = nomeLivro;
     }
 
-    public void setNomeAutor(String nomeAutor) {
+  /*  public void setNomeAutor(String nomeAutor) {
         this.nomeAutor = nomeAutor;
     }
 
@@ -28,12 +28,12 @@ public class UserModel {//chama-se Livro
 
     public void setPreco(Double preco) {
         this.preco = preco;
-    }
+    }*/
 
     private  String nomeLivro;
-    private  String nomeAutor;
-    private  String descricao;
-    private  Double preco;
+   // private  String nomeAutor;
+   // private  String descricao;
+  //  private  Double preco;
 
 
  /*
@@ -53,7 +53,7 @@ public class UserModel {//chama-se Livro
         return nomeLivro;
     }
 
-    public String getNomeAutor() {
+    /*public String getNomeAutor() {
         return nomeAutor;
     }
 
@@ -63,5 +63,5 @@ public class UserModel {//chama-se Livro
 
     public Double getPreco() {
         return preco;
-    }
+    }*/
 }

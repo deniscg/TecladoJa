@@ -1,0 +1,77 @@
+package com.example.denis.tecladov3;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+
+import io.realm.Realm;
+import io.realm.RealmResults;
+
+public class LoginActivity extends AppCompatActivity {
+    ImageButton logar;
+    ImageButton cadastrar;
+    Realm Inicio_realm;
+    TextView email,senha;
+    RealmResults<Cadastro> recebe;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+        Inicio_realm = Realm.getDefaultInstance();
+        logar = (ImageButton)findViewById(R.id.teclado_login2);
+        logar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, IntroducaoActivity.class);
+                startActivity(intent);
+
+                email=(TextView)findViewById(R.id.editText);
+                senha=(TextView)findViewById(R.id.editText2);
+                String confirmEmail = email.getText().toString();
+                String confirmSenha = senha.getText().toString();
+
+                try{
+                    recebe = Inicio_realm.where(Cadastro.class).findAll();
+
+                    //usuarioview =Inicio_realm.where(Cadastro.class).equalTo("email", confirmEmail).findFirst();
+                }
+                catch (Exception e){
+                    Toast.makeText(LoginActivity.this, "Erro Banco", Toast.LENGTH_SHORT).show();
+                }
+                try{
+                    for (Cadastro itens:recebe) {
+                        if(itens.getNome().equals(confirmEmail)){
+                            Toast.makeText(LoginActivity.this, "Parabéns", Toast.LENGTH_SHORT).show();
+                            Intent intent2 = new Intent(LoginActivity.this, IntroducaoActivity.class);
+                            startActivity(intent2);
+                        }else {
+                            Toast.makeText(LoginActivity.this, "Senaha incorreta", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+                catch (Exception e){
+                    Toast.makeText(LoginActivity.this, "Erro no For", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+        });
+        cadastrar = (ImageButton)findViewById(R.id.teclado_cadastra2);
+        cadastrar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {  //Estrutura do botão
+                Intent intent = new Intent(LoginActivity.this, CadastroActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+    }
+}

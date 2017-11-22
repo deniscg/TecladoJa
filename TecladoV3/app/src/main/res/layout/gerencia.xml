@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="80dp"
     android:orientation="vertical">
@@ -15,7 +16,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="DisableBaselineAlignment,InefficientWeight">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -23,14 +25,16 @@
                 android:layout_weight="6"
                 android:gravity="center_vertical"
                 android:orientation="vertical"
-                android:paddingLeft="12dp">
+                android:paddingLeft="12dp"
+                tools:ignore="NestedWeights,RtlHardcoded,RtlSymmetry,UselessParent">
 
                 <TextView
                     android:id="@+id/textview_nome"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Teste do nome"
-                    android:textSize="14dp" />
+                    android:textSize="14dp"
+                    tools:ignore="HardcodedText,SpUsage" />
 
             </LinearLayout>
 
@@ -49,15 +53,16 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/deletar"
+    <ImageButton
+        android:id="@+id/main_card_delete"
         android:layout_width="wrap_content"
-        android:layout_height="74dp"
-        android:layout_marginEnd="33dp"
-        android:text="Button"
+        android:layout_height="wrap_content"
+        android:src="@drawable/deletar"
+        tools:ignore="ContentDescription"
         android:layout_centerVertical="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true">
+
+    </ImageButton>
 
 
 </RelativeLayout>

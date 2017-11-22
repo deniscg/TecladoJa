@@ -17,6 +17,7 @@ import java.util.List;
 
 public class LineAdapter extends RecyclerView.Adapter {
 
+    //private List<UserModel> livros; anterior
     private List<UserModel> livros;
     private Context context;
 
@@ -42,11 +43,21 @@ public class LineAdapter extends RecyclerView.Adapter {
         UserModel livro  = livros.get(position) ;
 
         holder.nome.setText(livro.getNomeLivro());
+        /*
         holder.deletar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 removerItem(position);
-               // notifyItemInserted(0);
+                notifyItemInserted(0);
+               // recyclerView.getAdapter().notifyItemInserted(0);
+            }
+        });
+        */
+        holder.del.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                removerItem(position);
+                notifyItemInserted(0);
                 // recyclerView.getAdapter().notifyItemInserted(0);
             }
         });

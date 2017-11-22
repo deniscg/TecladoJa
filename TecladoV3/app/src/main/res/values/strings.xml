@@ -2,14 +2,14 @@
     <string name="app_name">TecladoJÁ</string>
     <string name="delete_view">Deletar view ao clicar</string>
 
-    <string name="pref_text">instrucao</string>
-    <string name="pref_key">user</string>
+    <string name="chave">chave</string>
+    <string name="preferencia">Teclado</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Configuração</string>
-    <string name="aula02">Aula02</string>
+    <string name="hitorico">Hitórico</string>
     <string name="aula03">Aula03</string>
     <string name="aula04">Aula04</string>
     <string name="busca" />
@@ -87,4 +87,5 @@ Com um simples teclado pode-se dispensar o acompanhamento básico de outros comp
 Com um simples teclado pode-se dispensar o acompanhamento básico de outros componentes de um grupo musical (bateria, guitarrista, contrabaxista, etc.).
 
 </string>
+    <string name="title_activity_introducao">IntroducaoActivity</string>
 </resources>

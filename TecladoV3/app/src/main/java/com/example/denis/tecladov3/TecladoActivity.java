@@ -17,16 +17,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.realm.Realm;
 
 public class TecladoActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     MediaPlayer mp;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
+    private ImageButton  inicio ;
+    private ImageButton cadastrar ;
+    Realm Inicio_realm;
+    TextView email,senha;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,29 +43,45 @@ public class TecladoActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ButterKnife.bind(this);//Preferences
-
-
-        mp = MediaPlayer.create(TecladoActivity.this, R.raw.aplauso);
-        try {
-            mp.start();
-            Thread.sleep(500);
-            mp.stop();
-        } catch (InterruptedException e) {
-
-        }
-
-       // ActionBar supportActionBar = getSupportActionBar();
-       // supportActionBar.setLogo(R.drawable.fundo2);
-/*
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        Inicio_realm = Realm.getDefaultInstance();
+        //-------------------------------------------------------------------
+        inicio = (ImageButton)findViewById(R.id.teclado_login);
+        inicio.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
+            public void onClick(View view) {  //Estrutura do botão
+                email=(TextView)findViewById(R.id.editText);
+                senha=(TextView)findViewById(R.id.editText2);
+                String confirmEmail = email.getText().toString();
+                String confirmSenha = senha.getText().toString();
+                Cadastro usuarioview;
+                String retor_Email="";
+                String retor_Senha="";
 
+                try{
+                    usuarioview =Inicio_realm.where(Cadastro.class).equalTo("email", confirmEmail).findFirst();
+                    retor_Email=usuarioview.getNome().toString();
+                    retor_Senha=usuarioview.getSenha();
+                }
+                catch (Exception e){
+                    Toast.makeText(TecladoActivity.this, "Erro Banco", Toast.LENGTH_SHORT).show();
+                }
+
+                if(confirmEmail==retor_Email&& confirmSenha==retor_Senha){
+                    Intent intent = new Intent(TecladoActivity.this, CursoActivity.class);
+                    startActivity(intent);
+                }
+                Toast.makeText(TecladoActivity.this, "Senaha incorreta", Toast.LENGTH_SHORT).show();
+            }
+        });
+        cadastrar = (ImageButton)findViewById(R.id.teclado_cadastra);
+        cadastrar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {  //Estrutura do botão
+                Intent intent = new Intent(TecladoActivity.this, CadastroActivity.class);
+                startActivity(intent);
+            }
+        });
+        //--------------------------------------------------------------------
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -81,7 +106,7 @@ public class TecladoActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.teclado, menu);
-
+/*
         MenuItem item = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView)item.getActionView();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -93,12 +118,9 @@ public class TecladoActivity extends AppCompatActivity
 
             @Override
             public boolean onQueryTextChange(String s) {
-
                 return false;
             }
-        });
-
-
+        });*/
         return true;
     }
 
@@ -111,11 +133,11 @@ public class TecladoActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Intent intent = new Intent(this, CursoActivity.class);
+            Intent intent = new Intent(TecladoActivity.this,InstrucaoActivity.class);
             startActivity(intent);
            // return true;
         }
-        if (id == R.id.aula02) {
+        /*if (id == R.id.aula02) {
             String tipodelayout = String.valueOf(R.layout.aula01_2);
             Intent intent = new Intent(this, AulaActivity.class);
             Bundle params = new Bundle();
@@ -129,7 +151,7 @@ public class TecladoActivity extends AppCompatActivity
             Intent intent = new Intent(this, Lista.class);
             startActivity(intent);
             // return true;
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
     }
@@ -161,16 +183,6 @@ public class TecladoActivity extends AppCompatActivity
 
     private void alert(String msg){
         Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
-    }
-    @OnClick(R.id.btnGetPrefs) void getPreferences() {
-        sharedPreferences = getSharedPreferences(getString(R.string.pref_key), Context.MODE_PRIVATE);//user
-        String result = sharedPreferences.getString(getString(R.string.pref_text), "");//instrucao
-        if (result!=""){
-            Toast.makeText(this,"Bem Vindo:", Toast.LENGTH_LONG).show();
-        }else {
-            Intent intent = new Intent(this,InstrucaoActivity.class);
-            startActivity(intent);
-        }
     }
 
 }

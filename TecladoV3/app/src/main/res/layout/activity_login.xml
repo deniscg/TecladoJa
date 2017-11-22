@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/fundo3"
+    android:layout_height="match_parent"
+    tools:context="com.example.denis.tecladov3.LoginActivity">
+    <RelativeLayout
+        android:layout_width="336dp"
+        android:layout_height="501dp"
+        tools:layout_editor_absoluteY="2dp"
+        android:layout_marginRight="7dp"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteX="41dp"
+        tools:ignore="MissingConstraints,RtlHardcoded">
+
+        <TextView android:text="Curso" android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textview"
+            android:textSize="35dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            tools:ignore="HardcodedText,SpUsage" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Teclado"
+            android:id="@+id/textView"
+            android:layout_below="@+id/textview"
+            android:layout_centerHorizontal="true"
+            android:textColor="#1641de"
+            android:textSize="35dp"
+            tools:ignore="HardcodedText,SpUsage" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText"
+            android:hint="Enter Name"
+            android:focusable="true"
+            android:textColorHighlight="#ff7eff15"
+            android:textColorHint="#ffff299f"
+            android:layout_marginTop="46dp"
+            android:layout_below="@+id/imageView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            tools:ignore="HardcodedText" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:src="@drawable/loginteclado"
+            tools:ignore="ContentDescription,MissingConstraints"
+            android:layout_marginTop="18dp"
+            android:layout_below="@+id/textview"
+            android:layout_centerHorizontal="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/editText2"
+            android:layout_below="@+id/editText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/editText"
+            android:layout_alignEnd="@+id/editText"
+            android:textColorHint="#ffff299f"
+            android:hint="Password"
+            tools:ignore="HardcodedText" />
+
+        <ImageButton
+            android:id="@+id/teclado_login2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/button_login"
+            android:background="@android:color/transparent"
+            android:layout_alignParentBottom="true"
+            android:layout_toStartOf="@+id/textview"
+            tools:ignore="ContentDescription,DuplicateIds" />
+
+
+
+        <ImageButton
+            android:id="@+id/teclado_cadastra2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/button_cadastrar"
+            android:background="@android:color/transparent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            tools:ignore="ContentDescription" />
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

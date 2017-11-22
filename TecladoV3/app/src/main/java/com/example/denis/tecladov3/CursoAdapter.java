@@ -25,11 +25,10 @@ public class CursoAdapter extends ArrayAdapter<Curso>{
     public View getView(int position, View convertView, ViewGroup parent){
         View linhaView = LayoutInflater.from(contexto).inflate(R.layout.listar_cursos, parent,false);
 
-        TextView titulo =(TextView)linhaView.findViewById(R.id.titulo);
+
         TextView modulo =(TextView)linhaView.findViewById(R.id.modulo);
         TextView aula =(TextView)linhaView.findViewById(R.id.aula);
         TextView horas =(TextView)linhaView.findViewById(R.id.horas);
-        titulo.setText(curso.get(position).getNome());
         modulo.setText(curso.get(position).getModulo());
         aula.setText(curso.get(position).getAula());
         horas.setText(curso.get(position).getHoras());

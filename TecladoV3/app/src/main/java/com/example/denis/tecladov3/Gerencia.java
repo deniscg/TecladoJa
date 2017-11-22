@@ -50,5 +50,7 @@ public class Gerencia extends RealmObject {
     public void setNotas(String notas) {
         this.notas = notas;
     }
+
+
 }
 ;

@@ -7,20 +7,11 @@
         android:title="@string/action_settings"
         app:showAsAction="never" />
     <item
-        android:id="@+id/aula02"
+        android:id="@+id/action_hitorico"
         android:orderInCategory="100"
-        android:title="@string/aula02"
+        android:title="@string/hitorico"
         app:showAsAction="never" />
-    <item
-        android:id="@+id/aula03"
-        android:orderInCategory="100"
-        android:title="Aula03"
-        app:showAsAction="never" />
-    <item android:id="@+id/action_search"
-        android:title="@string/busca"
-        app:showAsAction="ifRoom"
-        app:actionViewClass="android.widget.SearchView"
-        />
+
 
 
 

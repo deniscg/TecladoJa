@@ -5,20 +5,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class Curso extends AppCompatActivity {
-    String nome;
-    String aula;
-    String modulo;
-    String horas;
+import io.realm.RealmObject;
+
+public class Curso  {//extends AppCompatActivity extends RealmObject{
+
+    private String aula;
+    private String modulo;
+    private String horas;
     private int imagem;
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 
     public String getAula() {
         return aula;

@@ -1,7 +1,9 @@
 package com.example.denis.tecladov3;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -19,6 +21,11 @@ public class Aula02Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aula02);
+        //-------------------------------------
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //Mostrar o botão
+        getSupportActionBar().setHomeButtonEnabled(true);      //Ativar o botão
+        getSupportActionBar().setTitle("Histórico");     //Titulo para ser exibido na sua Action Bar em frente à seta
+        //-------------------------------------
         Consult_realm = Realm.getDefaultInstance();
         try{
             final ArrayList<Gerencia> mercadorias = new ArrayList<Gerencia>();
@@ -35,5 +42,17 @@ public class Aula02Activity extends AppCompatActivity {
 
         }
 
+    }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:  //ID do seu botão (gerado automaticamente pelo android, usando como está, deve funcionar
+                //setContentView(R.layout.activity_curso);
+                startActivity(new Intent(this, CursoActivity.class));  //O efeito ao ser pressionado do botão (no caso abre a activity)
+                finishAffinity();  //Método para matar a activity e não deixa-lá indexada na pilhagem
+                return true;
+            // break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

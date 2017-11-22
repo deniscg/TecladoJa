@@ -18,7 +18,7 @@ public class MyApp extends Application {
         Realm.init(this);
         //RealmConfiguration cofn = new RealmConfiguration().Builder();
         RealmConfiguration configuration = new RealmConfiguration.Builder()
-                .name(Realm.DEFAULT_REALM_NAME).schemaVersion(2).deleteRealmIfMigrationNeeded()
+                .name(Realm.DEFAULT_REALM_NAME).schemaVersion(4).deleteRealmIfMigrationNeeded()
                 .build();
         Realm.setDefaultConfiguration(configuration);
 

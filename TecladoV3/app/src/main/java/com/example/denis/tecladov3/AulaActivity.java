@@ -7,91 +7,55 @@ import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import io.realm.Realm;
+import io.realm.RealmConfiguration;
 
 import static android.R.id.content;
 
 public class AulaActivity extends AppCompatActivity {
     Realm realm;
+    WebView mWebView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aula);
-        //-----------------------------------------
-         realm = Realm.getDefaultInstance();
-        //-----------------------------------------
-        final TextView output = (TextView) findViewById(R.id.aula01_M1_msg04_1);
-        output.setMovementMethod(LinkMovementMethod.getInstance());
-        //-------------------------------------
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //Mostrar o botão
-        getSupportActionBar().setHomeButtonEnabled(true);      //Ativar o botão
-        getSupportActionBar().setTitle("Seu titulo aqui");     //Titulo para ser exibido na sua Action Bar em frente à seta
-        //-------------------------------------
+        try {
+            //-----------------------------------------
+            realm = Realm.getDefaultInstance();
+            //-----------------------------------------
+            //final TextView output = (TextView) findViewById(R.id.aula04_M1_btnaula04M1);
+            //output.setMovementMethod(LinkMovementMethod.getInstance());
 
-        Button avan1 =(Button)findViewById(R.id.aula01_M1_btnaula01M1);
-        avan1.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {  //Estrutura do botão
-                setContentView(R.layout.aula01_2);
-            }
-        });
-        /*
-        Button avan2 =(Button)findViewById(R.id.aula02_M1_btnaula022M1);
-        avan2.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {  //Estrutura do botão
-                setContentView(R.layout.aula01_3);
-            }
-        });
-        Button avan3 =(Button)findViewById(R.id.btnaula03M1);
-        avan3.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {  //Estrutura do botão
-                setContentView(R.layout.aula01_4);
-            }
-        });
-        Button avan4 =(Button)findViewById(R.id.btnaula04M1);
-        avan4.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {  //Estrutura do botão
-                setContentView(R.layout.aula01_5);
-            }
-        });
-        Button avan5 =(Button)findViewById(R.id.btnaula05M1);
-        avan5.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {  //Estrutura do botão
-                Gerencia gerencia = new Gerencia();
-                gerencia.setNome("Denis");
-                gerencia.setEmail("denis@gmail.com");
-                gerencia.setModulo("modulo01");
-                gerencia.setNotas("1");
+            //-------------------------------------
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true); //Mostrar o botão
+            getSupportActionBar().setHomeButtonEnabled(true);      //Ativar o botão
+            getSupportActionBar().setTitle("Modulo01");     //Titulo para ser exibido na sua Action Bar em frente à seta
+            //-------------------------------------
 
-                long key2=realm.where(Gerencia.class).count();
-                int numeroid =(int)key2;
-                gerencia.getNome();
-                gerencia.getEmail();
-                gerencia.getId();
-                gerencia.getModulo();
-                gerencia.getNotas();
+            ImageButton avan1 =(ImageButton)findViewById(R.id.aula01_M1_btnaula01M1);
+            avan1.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view) {  //Estrutura do botão
+                    setContentView(R.layout.aula01_2);
+                }
+            });
 
-                realm.beginTransaction();
-                realm.copyToRealm(gerencia);
-                realm.commitTransaction();
-
-                Intent intent = new Intent(AulaActivity.this, Aula02Activity.class);
-                startActivity(intent);
-
-
-            }
-        });*/
-
+        }catch (Exception e){
+            Toast.makeText(this," Erro no Inicio:", Toast.LENGTH_LONG).show();
+        }
     }
+
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:  //ID do seu botão (gerado automaticamente pelo android, usando como está, deve funcionar
@@ -104,20 +68,7 @@ public class AulaActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-    /* public void avancar(View v) {
 
-       String tipodelayout = String.valueOf(R.layout.aula01_2);
-        Intent intent = new Intent(getContext(), AulaActivity.class);
-        Bundle params = new Bundle();
-        params.putString("layout", tipodelayout);
-        intent.putExtras(params);
-        startActivity(intent);
-        setContentView(R.layout.tela);
-    }
-    private Context getContext()
-    {
-        return this;
-    }*/
 
     public void clickAction(View view){
         switch (view.getId()){
@@ -130,30 +81,49 @@ public class AulaActivity extends AppCompatActivity {
             case R.id.aula04_M1_btnaula04M1:
                 setContentView(R.layout.aula01_5);
                 break;
+            case R.id.aula05_web:
+                try{
+                            mWebView.setWebViewClient(new MyBrowser());
+                            mWebView.getSettings().setLoadsImagesAutomatically(true);
+                            mWebView.getSettings().setJavaScriptEnabled(true);
+                            mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+                            mWebView.loadUrl("https://www.youtube.com/watch?v=Hb82O8Ey8bg");;
+
+                }catch (Exception e){
+                    Toast.makeText(this," Erro no web:", Toast.LENGTH_LONG).show();
+                }
+                break;
             case R.id.aula05_M1_btnaula05M1:
-                Gerencia gerencia = new Gerencia();
-                gerencia.setNome("Denis");
-                gerencia.setEmail("denis@gmail.com");
-                gerencia.setModulo("modulo01");
-                gerencia.setNotas("1");
+                setContentView(R.layout.aula01_6);
+                break;
+            case R.id.aula06_M1_btnaula06M1:
+                try{
 
-                long key2=realm.where(Gerencia.class).count();
-                int numeroid =(int)key2;
-                gerencia.getNome();
-                gerencia.getEmail();
-                gerencia.getId();
-                gerencia.getModulo();
-                gerencia.getNotas();
+                    DadosCurso dados = new DadosCurso();
+                    long key=realm.where(DadosCurso.class).count();
+                    dados.setId(String.valueOf(key));
+                    dados.setHistorico("você concluiu 25% do curso");
 
-                realm.beginTransaction();
-                realm.copyToRealm(gerencia);
-                realm.commitTransaction();
+                    realm.beginTransaction();
+                    realm.copyToRealm(dados);
+                    realm.commitTransaction();
 
-                Intent intent = new Intent(AulaActivity.this, Aula02Activity.class);
-                startActivity(intent);
+                    Intent intent = new Intent(AulaActivity.this, Lista.class);
+                    startActivity(intent);
+                    Toast.makeText(this, "Histórico", Toast.LENGTH_SHORT).show();
+                }catch (Exception e){
+                    Toast.makeText(this," Erro no banco:", Toast.LENGTH_LONG).show();
+                }
+
 
                 break;
 
+        }
+    }
+    private class MyBrowser extends WebViewClient{
+        public boolean overrideUrlLoanding(WebView view,String url){
+            view.loadUrl(url);
+            return true;
         }
     }
 }
