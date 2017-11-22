@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -83,11 +84,20 @@ public class AulaActivity extends AppCompatActivity {
                 break;
             case R.id.aula05_web:
                 try{
-                            mWebView.setWebViewClient(new MyBrowser());
-                            mWebView.getSettings().setLoadsImagesAutomatically(true);
-                            mWebView.getSettings().setJavaScriptEnabled(true);
-                            mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-                            mWebView.loadUrl("https://www.youtube.com/watch?v=Hb82O8Ey8bg");;
+                    mWebView=(WebView)findViewById(R.id.aula_webView);
+                    //   mWebView.setWebViewClient(new MyBrowser());
+                    mWebView.getSettings().setLoadsImagesAutomatically(true);
+                    mWebView.getSettings().setJavaScriptEnabled(true);
+                    mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+                    mWebView.loadUrl("https://www.youtube.com/watch?v=Rov_iVBfCIU&feature=youtu.be");;
+                    mWebView.setWebViewClient(new WebViewClient(){
+                        @Override
+                        public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+                            return super.shouldOverrideUrlLoading(view, request);
+                        }
+
+
+                    });
 
                 }catch (Exception e){
                     Toast.makeText(this," Erro no web:", Toast.LENGTH_LONG).show();

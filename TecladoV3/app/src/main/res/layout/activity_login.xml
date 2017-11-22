@@ -24,12 +24,12 @@
             tools:ignore="HardcodedText,SpUsage" />
 
         <TextView
+            android:id="@+id/txtteclado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Teclado"
-            android:id="@+id/textView"
             android:layout_below="@+id/textview"
             android:layout_centerHorizontal="true"
+            android:text="Teclado"
             android:textColor="#1641de"
             android:textSize="35dp"
             tools:ignore="HardcodedText,SpUsage" />

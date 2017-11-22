@@ -47,11 +47,6 @@ public class InstrucaoActivity extends AppCompatActivity {
         //--------------------------------------------------------------
         SharedPreferences settings = getSharedPreferences(getString(R.string.preferencia), 0);
         final String result = settings.getString(getString(R.string.chave), null);
-        TextView mostra = (TextView)findViewById(R.id.instru_txt01);
-        mostra.setText(result);
-
-       // sharedPreferences = getSharedPreferences(getString(R.string.preferencia), Context.MODE_PRIVATE);
-       // final String result = sharedPreferences.getString(getString(R.string.chave), "");//instrucao
 
         //-------------------------------------------------------
         if (result!="som" ) {//&& block01

@@ -42,15 +42,14 @@ public class CursoActivity extends AppCompatActivity {
         Realm.init(this);
         //----------------------------
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //Mostrar o botão
-        getSupportActionBar().setHomeButtonEnabled(true);      //Ativar o botão
-        getSupportActionBar().setTitle("Modulos");     //Titulo para ser exibido na sua Action Bar em frente à seta
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setTitle("Modulos");
     
         //-----------------------------
         SharedPreferences settings = getSharedPreferences(getString(R.string.preferencia), 0);
         final String result = settings.getString(getString(R.string.chave), null);
-        TextView mostra = (TextView)findViewById(R.id.curso_txtmsg01);
-        mostra.setText(result);
+
 
         if (result!="som") {
 
