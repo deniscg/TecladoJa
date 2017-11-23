@@ -51,11 +51,6 @@ public class LoginActivity extends AppCompatActivity {
                     usuarioview =Inicio_realm.where(Cadastro.class).equalTo("email", confirmEmail).findFirst();
                     retor_Email=usuarioview.getEmail().toString();
                     retor_Senha=usuarioview.getSenha().toString();
-                }
-                catch (Exception e){
-                    Toast.makeText(LoginActivity.this, "Erro Banco", Toast.LENGTH_SHORT).show();
-                }
-                try{
                     if(confirmEmail!=retor_Email && confirmSenha!=retor_Senha){
                         Toast.makeText(LoginActivity.this, "Logado ", Toast.LENGTH_SHORT).show();
                         Intent intent2 = new Intent(LoginActivity.this, IntroducaoActivity.class);
@@ -64,6 +59,12 @@ public class LoginActivity extends AppCompatActivity {
                     }else{
                         Toast.makeText(LoginActivity.this, "Senha errada", Toast.LENGTH_SHORT).show();
                     }
+                }
+                catch (Exception e){
+                    Toast.makeText(LoginActivity.this, "Erro ", Toast.LENGTH_SHORT).show();
+                }
+                try{
+
 
 
                     /*

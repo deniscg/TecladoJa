@@ -50,20 +50,14 @@ public class InstrucaoActivity extends AppCompatActivity {
 
         //-------------------------------------------------------
         if (result!="som" ) {//&& block01
-            Toast.makeText(InstrucaoActivity.this,"não achei:", Toast.LENGTH_LONG).show();
             estado.setOnCheckedChangeListener (null);
             estado.setChecked(true);
             block01=false;
         }else if ( result=="som" ){//result!="" &&  block02
-            Toast.makeText(InstrucaoActivity.this," achei:", Toast.LENGTH_LONG).show();
             estado.setOnCheckedChangeListener (null);
             estado.setChecked(false);
             block02=false;
         }
-        //--------------------------------------------------------
-        //this.recreate();
-       // estado.setOnCheckedChangeListener ((CompoundButton.OnCheckedChangeListener) InstrucaoActivity.this);
-        //--------------------------------------------------------------
 
         estado.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override

@@ -50,7 +50,7 @@ public class CadastroActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(CadastroActivity.this, LoginActivity.class);
                     startActivity(intent);
-                    Toast.makeText(CadastroActivity.this," Login com Sucesso!:", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CadastroActivity.this," Cadastro com Sucesso!:", Toast.LENGTH_LONG).show();
                 }catch (Exception e){
                     Toast.makeText(CadastroActivity.this," Erro no cadastro:", Toast.LENGTH_LONG).show();
                 }

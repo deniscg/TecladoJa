@@ -99,7 +99,7 @@ public class CursoActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapter, View view,
                                     int posicao, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(CursoActivity.this,"Posição Selecionada:" + posicao, Toast.LENGTH_LONG).show();
+               // Toast.makeText(CursoActivity.this,"Posição Selecionada:" + posicao, Toast.LENGTH_LONG).show();
                 if(posicao==0){
                     Intent intent = new Intent(CursoActivity.this, AulaActivity.class);
                     startActivity(intent);

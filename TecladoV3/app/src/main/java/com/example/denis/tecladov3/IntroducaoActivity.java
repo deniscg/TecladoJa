@@ -81,6 +81,8 @@ public class IntroducaoActivity extends AppCompatActivity
             startActivity(intent);
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
+            Intent intent = new Intent(IntroducaoActivity.this,Aula02Activity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_slideshow) {
 
